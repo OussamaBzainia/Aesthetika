@@ -2,16 +2,25 @@ package com.example.aesthetika.view.auth
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.ImageDecoder
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.os.Handler
+import android.provider.MediaStore
+import android.util.Log
+import android.widget.*
 import com.example.aesthetika.R
 import com.example.aesthetika.ViewModel.userViewModel
+import com.example.aesthetika.view.features.UserNav
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
+import java.io.File
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.asRequestBody
+
 
 class EditProfieActivity : AppCompatActivity() {
 
@@ -60,17 +69,86 @@ class EditProfieActivity : AppCompatActivity() {
             val fullName = FullName.text.toString()
             val userName = Username.text.toString()
 
+            if (fullName.isEmpty() || userName.isEmpty()) {
+                // Show an error message to the user
+                showSnackbar("Fields must not be empty", R.drawable.error)
+            }
+
+            val jsonObject = JsonObject().apply {
+                addProperty("FullName", fullName)
+                addProperty("username", userName)
+            }
+
+            if (id != null) {
+                UserViewModel.updateArtistById(id,jsonObject){ response, code ->
+                    if (code == 200) {
+                        Log.d("SUCCESS", "Response: $response")
+                        // Show a success message to the user
+                        showSnackbar("Informations updated successfully", R.drawable.success)
+                    }
+                    else {
+                        showSnackbar("Something went wrong, Please try again", R.drawable.error)
+                        Log.e("ERROR", "Error: API call failed")
+                    }
+
+                }
+            }
+
         }
 
 
         EditPhoto.setOnClickListener {
             // Open the gallery app to select a photo
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, 0)
+            val intentPhoto = Intent(Intent.ACTION_PICK)
+            intentPhoto.type = "image/*"
+            startActivityForResult(intentPhoto, 0)
         }
 
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == 0) {
+            // Get the selected image's URI
+            val uri = data?.data
+            if (uri != null) {
+                // Retrieve the user ID from the SharedPreferences
+                val sharedPref = getSharedPreferences("USER_DATA", Context.MODE_PRIVATE)
+                val id = sharedPref.getString("USER_ID", "")
+                if (id != null) {
+                    val file = File(getPathFromUri(uri))
+                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                    // Call the updatePhoto API endpoint with the selected image file
+                    UserViewModel.updatePhoto(id, requestFile){ response, code ->
+                        // Handle the response
+                        val jsonResponse = JSONObject(response.toString())
+                        val newURL = jsonResponse.getString("newURL")
+                        // Update the profile picture
+                        Picasso.get().load(newURL).into(ProfilePic)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getPathFromUri(uri: Uri): String? {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, projection, null, null, null)
+        if (cursor != null) {
+            val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            val filePath = cursor.getString(column_index)
+            cursor.close()
+            return filePath
+        }
+        return null
+    }
+
+
+
+
+
     /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 0) {
@@ -89,6 +167,16 @@ class EditProfieActivity : AppCompatActivity() {
             }
         }*/
 
-
+    private fun showSnackbar(message: String, icon: Int) {
+        val snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+        val snackbarView = snackbar.view
+        snackbarView.setBackgroundResource(if (icon == R.drawable.success) R.color.green else R.color.red)
+        // Add an icon to the right of the Snackbar message
+        val iconView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_action) as TextView
+        val iconMargin = 20
+        iconView.setCompoundDrawablesWithIntrinsicBounds(icon, 0, 0, 0)
+        iconView.compoundDrawablePadding = iconMargin
+        snackbar.show()
+    }
 
 }

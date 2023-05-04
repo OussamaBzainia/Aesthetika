@@ -5,41 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.auth.EditProfieActivity" >
+    tools:context=".view.auth.EditProfieActivity">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="Full name"
         android:textColor="#868686"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/FullNameEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/FullNameEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/FullNameEdit" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
         android:layout_marginBottom="13dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="Username"
         android:textColor="#868686"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/UsernameEdit"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/UsernameEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/UsernameEdit" />
 
     <EditText
         android:id="@+id/FullNameEdit"
         android:layout_width="325dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/edit_style"
         android:ems="10"
         android:inputType="textPersonName"
@@ -56,7 +56,7 @@
         android:id="@+id/UsernameEdit"
         android:layout_width="325dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="158dp"
+        android:layout_marginBottom="85dp"
         android:background="@drawable/edit_style"
         android:ems="10"
         android:inputType="textPersonName"
@@ -73,7 +73,9 @@
         android:id="@+id/ProfilePicEditProfile"
         android:layout_width="189dp"
         android:layout_height="184dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -84,20 +86,36 @@
         android:layout_width="53dp"
         android:layout_height="48dp"
         android:background="@drawable/rounded__image_button"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="#FF9679"
         app:layout_constraintBottom_toBottomOf="@+id/ProfilePicEditProfile"
         app:layout_constraintEnd_toEndOf="@+id/ProfilePicEditProfile"
         app:srcCompat="@drawable/outline_edit_24" />
 
     <Button
         android:id="@+id/UpdateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:text="Button"
+        android:layout_width="339dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="73dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Update"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Update your profile"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilePicEditProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

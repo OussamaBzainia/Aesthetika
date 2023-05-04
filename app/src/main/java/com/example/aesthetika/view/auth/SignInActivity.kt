@@ -64,6 +64,7 @@ class SignInActivity : AppCompatActivity() {
                 val jsonObject = JsonObject().apply {
                     addProperty("email", emailLowerCase)
                     addProperty("mdp", password)
+
                 }
 
                 UserViewModel.login(jsonObject) { response, code ->
