@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#6D74F2</color>
+    <color name="accent">#F2746C</color>
+    <color name="background">#F8F8F8</color>
+
+    <!-- Your other colors here -->
+    <color name="Secondary_actions">#8FB1D1</color>
+    <color name="Text">#353535</color>
+    <color name="Secondary_text">#868686</color>
+    <color name="TextField_title">#A0A0A0</color>
+    <color name="green">#00B894</color>
+    <color name="red">#EA2027</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+</resources>

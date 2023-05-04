@@ -1,0 +1,44 @@
+package com.example.aesthetika.view.features
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.aesthetika.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+class UserNav : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_user_nav)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.chat -> {
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, ChatFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.profile -> {
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, ProfileFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.notifications -> {
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, NotificationsFragment()).commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> return@setOnNavigationItemSelectedListener false
+            }
+        }
+
+
+
+    }
+}

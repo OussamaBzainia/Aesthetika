@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.auth.SettingsActivity">
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/Help"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton10"
+        app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+    <TextView
+        android:id="@+id/Notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Notifications"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Language" />
+
+    <TextView
+        android:id="@+id/Preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="223dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Preferences"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/HelpCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="222dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Help Center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+
+    <Switch
+        android:id="@+id/darkMode"
+        android:layout_width="329dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="18dp"
+        android:drawableStart="@drawable/outline_dark_mode_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Dark mode"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@+id/Language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Preferences"
+        app:layout_constraintTop_toBottomOf="@+id/Preferences" />
+
+    <TextView
+        android:id="@+id/Language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="109dp"
+        android:drawableStart="@drawable/baseline_language_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Language"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView20"
+        app:layout_constraintStart_toStartOf="@+id/Preferences"
+        app:layout_constraintTop_toBottomOf="@+id/darkMode" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/darkMode"
+        app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton11"
+        app:layout_constraintStart_toEndOf="@+id/About"
+        app:layout_constraintTop_toBottomOf="@+id/switch3"
+        app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="26dp"
+        android:text="English"
+        android:textColor="@color/Secondary_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/Language"
+        app:layout_constraintTop_toBottomOf="@+id/darkMode" />
+
+    <Switch
+        android:id="@+id/AllowNotifications"
+        android:layout_width="337dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="24dp"
+        android:drawableStart="@drawable/baseline_notifications_none_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Allow notifications"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Notifications"
+        app:layout_constraintTop_toBottomOf="@+id/Notifications" />
+
+    <TextView
+        android:id="@+id/Help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="209dp"
+        android:drawableStart="@drawable/outline_help_outline_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Help"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton11"
+        app:layout_constraintStart_toStartOf="@+id/HelpCenter"
+        app:layout_constraintTop_toBottomOf="@+id/About" />
+
+    <TextView
+        android:id="@+id/About"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="195dp"
+        android:drawableStart="@drawable/outline_info_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="About"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton10"
+        app:layout_constraintStart_toStartOf="@+id/HelpCenter"
+        app:layout_constraintTop_toBottomOf="@+id/HelpCenter" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="249dp"
+        android:layout_marginBottom="84dp"
+        android:drawableStart="@drawable/outline_logout_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/lato"
+        android:text="Sign out"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HelpCenter" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="337dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="30dp"
+        android:drawableStart="@drawable/outline_campaign_24"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Push notifications"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/HelpCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AllowNotifications" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

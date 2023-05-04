@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="Widget.Aesthetika.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.Aesthetika.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="FabShapeOverlay" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="android:background">@drawable/fab_shape</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight"></style>
+
+</resources>
