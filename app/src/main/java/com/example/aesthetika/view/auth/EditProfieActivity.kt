@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import java.io.File
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 
 
@@ -33,6 +35,11 @@ class EditProfieActivity : AppCompatActivity() {
     val UserViewModel = userViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setCustomView(R.layout.actionbar_title)
+        supportActionBar?.customView?.findViewById<TextView>(R.id.action_bar_title)?.text = "Edit profile"
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profie)
 
@@ -119,8 +126,9 @@ class EditProfieActivity : AppCompatActivity() {
                 if (id != null) {
                     val file = File(getPathFromUri(uri))
                     val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                    val filePart = MultipartBody.Part.createFormData("ProfilePic", file.name, requestFile)
                     // Call the updatePhoto API endpoint with the selected image file
-                    UserViewModel.updatePhoto(id, requestFile){ response, code ->
+                    UserViewModel.updatePhoto(id, filePart){ response, code ->
                         // Handle the response
                         val jsonResponse = JSONObject(response.toString())
                         val newURL = jsonResponse.getString("newURL")

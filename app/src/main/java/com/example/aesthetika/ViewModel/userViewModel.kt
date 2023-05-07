@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.aesthetika.utils.RetrofitInstance
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -147,8 +148,8 @@ class userViewModel(): ViewModel() {
         })
     }
 
-    fun updatePhoto(id: String, requestBody: RequestBody, callback: (String?, Int) -> Unit) {
-        apiService.updatePhoto(id,requestBody).enqueue(object : Callback<JsonElement> {
+    fun updatePhoto(id: String, filePart: MultipartBody.Part, callback: (String?, Int) -> Unit) {
+        apiService.updatePhoto(id,filePart).enqueue(object : Callback<JsonElement> {
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
