@@ -41,13 +41,14 @@ interface APIServices {
 
 
 
-
     //Chat
 
-    /*@GET("/getMyConversations/{senderId}")
+    @GET("/getMyConversations/{senderId}")
     fun getMyConversations(@Path("senderId") senderId: String): Call<JsonElement>
+    @GET("/getMyMessages/{conversationId}")
+    fun getMyMessages(@Path("conversationId") conversationId: String): Call<JsonElement>
     @POST("/sendMessage")
-    fun sendMessage(@Body requestBody: JsonObject): Call<JsonElement>*/
+    fun sendMessage(@Body requestBody: JsonObject): Call<JsonElement>
 
 
 

@@ -15,6 +15,8 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ConversationAdapter(var conversations: List<Conversation>) :
     RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder>() {
@@ -25,35 +27,45 @@ class ConversationAdapter(var conversations: List<Conversation>) :
     }
 
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
-        holder.bindView(conversations[position])
+
+
+            val conversation=conversations[position]
+
+            val userr=conversation.receiver!!.FullName
+            holder.usernameTextView.text = userr // set username to receiver name
+            Log.d("fullname","$userr")
+            val lastMessage=conversation.lastMessage
+            holder.lastMessageTextView.text = lastMessage // set last message text
+            holder.lastMessageTimeTextView.text =
+                formatDate(conversation.lastMessageDate.toString()) // set last message time
+
+          // add click listener to the conversation item
+           holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ChatActivity::class.java)
+            intent.putExtra("conversation", conversation)
+            holder.itemView.context.startActivity(intent)
+           }
+
+
     }
 
     override fun getItemCount(): Int {
         return conversations.size
     }
 
-    inner class ConversationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val profileImageView: ImageView = itemView.findViewById(R.id.profile_image_conversation)
-        private val usernameTextView: TextView = itemView.findViewById(R.id.user_name_conversation)
-        private val lastMessageTextView: TextView = itemView.findViewById(R.id.last_message)
-        private val lastMessageTimeTextView: TextView = itemView.findViewById(R.id.last_message_time)
+    class ConversationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+         val profileImageView: ImageView = itemView.findViewById(R.id.profile_image_conversation)
+         val usernameTextView: TextView = itemView.findViewById(R.id.user_name_conversation)
+         val lastMessageTextView: TextView = itemView.findViewById(R.id.last_message)
+         val lastMessageTimeTextView: TextView = itemView.findViewById(R.id.last_message_time)
 
-        fun bindView(conversation: Conversation) {
-
-            /*itemView.setOnClickListener {
-                val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("conversation", conversation)
-                itemView.context.startActivity(intent)
-
-            }*/
-
-            usernameTextView.text=conversation.receiver.FullName
-            lastMessageTextView.text=conversation.lastMessage
-
-
-
-
-        }
 
     }
+    private fun formatDate(dateString: String): String {
+        val inputFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+        val outputFormat = SimpleDateFormat("HH:mm", Locale.ENGLISH)
+        val date = inputFormat.parse(dateString)
+        return outputFormat.format(date)
+    }
+
 }

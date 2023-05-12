@@ -1,15 +1,13 @@
 package com.example.aesthetika.model.entities
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
 data class Conversation(
-    @SerializedName("lastMessage")
-    var lastMessage: String,
-    @SerializedName("lastMessageDate")
-    var lastMessageDate: Date,
-    @SerializedName("sender")
-    var sender: User,
-    @SerializedName("receiver")
-    var receiver: User,
-)
+    val _id: String,
+    val lastMessage: String,
+    val lastMessageDate: Date,
+    val sender: User?,
+    val receiver: User?
+) : Serializable

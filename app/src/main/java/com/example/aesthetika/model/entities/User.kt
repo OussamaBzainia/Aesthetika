@@ -1,6 +1,7 @@
 package com.example.aesthetika.model.entities
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
     @SerializedName("_id")
@@ -19,4 +20,4 @@ data class User(
     var username: String,
     @SerializedName("BirthDate")
     var BirthDate: String,
-)
+): Serializable

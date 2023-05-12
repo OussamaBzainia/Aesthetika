@@ -23,10 +23,13 @@ class ChatFragment : Fragment() {
     var conversations = ArrayList<Conversation>()
 
 
+
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val rootView= inflater.inflate(R.layout.fragment_chat, container, false)
 
@@ -37,6 +40,7 @@ class ChatFragment : Fragment() {
 
         val sharedPrefs = context?.getSharedPreferences("USER_DATA", Context.MODE_PRIVATE)
         val senderId = sharedPrefs?.getString("USER_ID","null")
+        Log.d("id","$senderId")
 
         ChatViewModel.getMyConversations(senderId.toString()) { response, code ->
 
@@ -44,19 +48,15 @@ class ChatFragment : Fragment() {
                 val jsonObject = Gson().fromJson(response, JsonObject::class.java)
                 conversations = Gson().fromJson(jsonObject.getAsJsonArray("conversations"), object : TypeToken<ArrayList<Conversation>>() {}.type)
 
+                adapter.conversations=conversations
+                adapter.notifyDataSetChanged()
+                Log.d("conversations","$conversations")
             } else {
                 Log.e("ERROR", "Error: API call failed")
 
             }
 
         }
-
-
-
-
-
-
-
 
 
 
