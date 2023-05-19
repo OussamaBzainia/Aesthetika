@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.aesthetika.R
+import io.socket.client.IO
+import io.socket.client.Socket
 
 class SplashActivity : AppCompatActivity() {
 
 
     private lateinit var SignIn:Button
+    private lateinit var socket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -27,6 +30,8 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
 

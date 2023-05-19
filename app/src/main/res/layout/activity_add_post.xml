@@ -11,67 +11,46 @@
         android:id="@+id/description"
         android:layout_width="336dp"
         android:layout_height="139dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/edti_style_gray"
         android:ems="10"
+        android:fontFamily="@font/montserrat"
         android:gravity="start"
+        android:hint="What are you thinking"
         android:inputType="textPersonName"
         android:paddingStart="12dp"
-        android:textColorHint="#999DA9"
+        android:paddingTop="13dp"
+        android:textColorHint="#8f92a1"
+        android:textSize="16sp"
         app:boxStrokeColor="@color/Secondary_actions"
         app:boxStrokeWidth="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Description"
-        android:textColor="#868686"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/description"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/description"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="262dp"
         android:layout_height="158dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="102dp"
         android:src="@drawable/upload_image"
+        app:layout_constraintBottom_toTopOf="@+id/addPost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Thumbnail"
-        android:textColor="#868686"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/select_photo_add_post" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Add a post"
-        android:textColor="#000000"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Create a post"
+        android:textColor="@color/Text"
         android:textSize="38sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
@@ -90,10 +69,36 @@
         app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/select_photo_add_post"
+        android:layout_width="336dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
+        android:textAllCaps="false"
+        android:text="Select Photo or Video"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="354dp"
+        android:layout_height="186dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/addPost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_photo_add_post" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

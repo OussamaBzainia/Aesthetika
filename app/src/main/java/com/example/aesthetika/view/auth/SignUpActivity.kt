@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import com.example.aesthetika.R
@@ -21,6 +22,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var UserName:EditText
     private lateinit var Password:EditText
     private lateinit var SignUpButton:Button
+    private lateinit var accept:CheckBox
 
     val UserViewModel = userViewModel()
 
@@ -40,6 +42,7 @@ class SignUpActivity : AppCompatActivity() {
         UserName=findViewById(R.id.UserName)
         Password=findViewById(R.id.PasswordSignUp)
         SignUpButton=findViewById(R.id.SignUpButton)
+        accept=findViewById(R.id.acceptTerms)
 
         SignUpButton.setOnClickListener {
             val fullName = FullName.text.toString()
@@ -48,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
             val password = Password.text.toString()
 
             // Check that the email and password fields are not empty
-            if (email.isEmpty() || password.isEmpty() || fullName.isEmpty() || userName.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty() || fullName.isEmpty() || userName.isEmpty() || !accept.isChecked) {
                 // Show an error message to the user
                 showSnackbar("All fields are required", R.drawable.error)
             }

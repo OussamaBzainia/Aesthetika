@@ -12,6 +12,7 @@ import com.example.aesthetika.R
 import com.example.aesthetika.model.entities.Conversation
 import com.example.aesthetika.view.auth.EmailVerificationActivity
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,9 +32,14 @@ class ConversationAdapter(var conversations: List<Conversation>) :
 
             val conversation=conversations[position]
 
-            val userr=conversation.receiver!!.FullName
+            val userr=conversation.receiver!!.username
             holder.usernameTextView.text = userr // set username to receiver name
-            Log.d("fullname","$userr")
+
+            val profileLinkImage= conversation.receiver.ProfilePic
+            val pf=holder.profileImageView
+            Picasso.get().load(profileLinkImage).into(pf)
+
+
             val lastMessage=conversation.lastMessage
             holder.lastMessageTextView.text = lastMessage // set last message text
             holder.lastMessageTimeTextView.text =

@@ -190,6 +190,27 @@ class userViewModel(): ViewModel() {
         })
     }
 
+    fun getAllUsers(callback: (String?, Int) -> Unit) {
+        apiService.getAllUsers().enqueue(object : Callback<JsonElement> {
+            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        // Handle the JSON response
+                        callback(responseBody.toString(), response.code())
+                    }
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    callback(errorBody, response.code())
+                }
+            }
+
+            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+                callback(t.message, 501)
+            }
+        })
+    }
+
 
 
 

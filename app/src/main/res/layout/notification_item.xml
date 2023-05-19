@@ -1,0 +1,59 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/profile_image_notification"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_place_holder" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="username"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/message_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/lato"
+            android:text="message"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/time_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:text="time"
+        android:textColor="@color/Secondary_text" />
+
+
+</LinearLayout>
+
+
+

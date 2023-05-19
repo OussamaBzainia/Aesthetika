@@ -14,6 +14,7 @@
         <item name="cornerSize">50%</item>
         <item name="android:background">@drawable/fab_shape</item>
     </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.DayNight"></style>
 
 </resources>

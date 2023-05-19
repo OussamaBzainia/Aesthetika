@@ -121,7 +121,7 @@ class ChatActivity : AppCompatActivity() {
         job = scope.launch {
             while (true) {
                 getData() // the function that should be ran every second
-                delay(2500)
+                delay(500)
             }
         }
     }

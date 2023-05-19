@@ -18,6 +18,7 @@ import com.example.aesthetika.model.entities.Conversation
 import com.example.aesthetika.model.entities.MessageWithoutPopulate
 import com.example.aesthetika.view.features.ChatActivity
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -55,8 +56,16 @@ class MessageAdapter(var items: MutableList<MessageWithoutPopulate>, var convers
 
                 userNameTV.text = conversation.sender!!.username
 
+                val profileLinkImage= conversation.sender.ProfilePic
+
+                Picasso.get().load(profileLinkImage).into(profilePictureIV)
+
             } else {
                 userNameTV.text = conversation.receiver!!.username
+                val profileLinkImage= conversation.receiver.ProfilePic
+
+                Picasso.get().load(profileLinkImage).into(profilePictureIV)
+
 
             }
 
